@@ -14,11 +14,6 @@ RUN conda install -c anaconda -y \
     Django
 RUN mkdir /root/eenter_web
 COPY --chown=root:root eenter_web /root/eenter_web
-#RUN mkdir /root/eenter_project
-#RUN django-admin startproject config /root/eenter_project
-#ERUN sed -i 's/ALLOWED_HOSTS \= \[\]/ALLOWED_HOSTS \= \[ '\''www\.eenter\.co\.kr'\'' \, '\''localhost'\'' \]/g' /root/eenter_project/config/settings.py
-#RUN echo "python manage.py runserver 0.0.0.0:8000" > /root/eenter_project/startDjangoServer.sh
-#RUN chmod u+x /root/eenter_project/startDjangoServer.sh
 RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/g' /etc/ssh/sshd_config
 RUN mkdir /root/.ssh
 COPY --chown=root:root authorized_keys /root/.ssh/
